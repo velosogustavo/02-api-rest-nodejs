@@ -39,7 +39,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
 
       const transaction = await knex('transactions')
         .where({
-          session_id: sessionId, // como a chave é igual o valor o esLint faz a short syntax(antes era session_id: sessionId e id: id)
+          session_id: sessionId,
           id,
         })
         .first()
@@ -68,8 +68,6 @@ export async function transactionsRoutes(app: FastifyInstance) {
   )
 
   app.post('/', async (request, reply) => {
-    // { tittle, amount, type: credit ou debit }
-
     const creatTransactionBodySchema = z.object({
       title: z.string(),
       amount: z.number(),
@@ -91,7 +89,6 @@ export async function transactionsRoutes(app: FastifyInstance) {
       })
     }
 
-    // criando uma nova transação que o insert irá botar no banco de dados
     await knex('transactions').insert({
       id: randomUUID(),
       title,

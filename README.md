@@ -62,16 +62,21 @@ npm install
 Copie o arquivo de exemplo e preencha os valores:
 
 ```bash
+# Linux/Mac
 cp .env.example .env
+
+# Windows
+copy .env.example .env
 ```
 
 Variáveis necessárias:
 
-| Variável       | Descrição                                  | Exemplo       |
-|----------------|--------------------------------------------|---------------|
-| `NODE_ENV`     | Ambiente de execução                       | `development` |
-| `DATABASE_URL` | Caminho para o arquivo do banco SQLite     | `./db/app.db` |
-| `PORT`         | Porta em que o servidor irá rodar          | `3333`        |
+| Variável          | Descrição                                        | Exemplo                          |
+|-------------------|--------------------------------------------------|----------------------------------|
+| `NODE_ENV`        | Ambiente de execução                             | `development`                    |
+| `DATABASE_CLIENT` | Cliente do banco de dados                        | `sqlite` ou `pg`                 |
+| `DATABASE_URL`    | Caminho do SQLite ou URL de conexão do PostgreSQL | `./db/app.db` ou `postgresql://user:pass@host/db` |
+| `PORT`            | Porta em que o servidor irá rodar                | `3333`                           |
 
 ### Executando as Migrations
 
