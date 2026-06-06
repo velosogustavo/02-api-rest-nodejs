@@ -11,9 +11,11 @@ Esta API permite que usuários criem e consultem transações financeiras (créd
 - **[Fastify](https://fastify.dev/)** — Framework web rápido e de baixo overhead
 - **[TypeScript](https://www.typescriptlang.org/)** — Tipagem estática para JavaScript
 - **[Knex.js](https://knexjs.org/)** — Query builder SQL e migrations
-- **[SQLite](https://www.sqlite.org/)** — Banco de dados relacional leve
+- **[SQLite](https://www.sqlite.org/)** — Banco de dados relacional leve para desenvolvimento e testes
+- **[PostgreSQL](https://www.postgresql.org/)** — Banco de dados relacional em produção
 - **[Zod](https://zod.dev/)** — Validação de esquemas em tempo de execução
 - **[Vitest](https://vitest.dev/)** — Testes unitários e de integração
+- **[@fastify/cookie](https://github.com/fastify/fastify-cookie)** — Gerenciamento de cookies
 - **[dotenv](https://github.com/motdotla/dotenv)** — Gerenciamento de variáveis de ambiente
 
 ## 📁 Estrutura do Projeto
@@ -21,23 +23,27 @@ Esta API permite que usuários criem e consultem transações financeiras (créd
 ```
 src/
 ├── @types/
-│   └── knex.d.ts          # Extensões de tipos do Knex
+│   └── knex.d.ts                         # Extensões de tipos do Knex
 ├── env/
-│   └── index.ts           # Validação das variáveis de ambiente
+│   └── index.ts                          # Validação das variáveis de ambiente
 ├── middlewares/
-│   └── check-session-id-exists.ts  # Middleware de autenticação por sessão
+│   └── check-session-id-exists.ts        # Middleware de autenticação por sessão
 ├── routes/
-│   └── transactions.ts    # Rotas de transações
-├── app.ts                 # Configuração do app Fastify
-├── database.ts            # Configuração do Knex
-└── server.ts              # Ponto de entrada do servidor
+│   └── transactions.ts                   # Rotas de transações
+├── app.ts                                # Configuração do app Fastify
+├── database.ts                           # Configuração do Knex
+└── server.ts                             # Ponto de entrada do servidor
 
 db/
-└── migrations/            # Migrations do banco de dados
+└── migrations/                           # Migrations do banco de dados
 
 test/
-└── transactions.spec.ts   # Testes automatizados
+└── transactions.spec.ts                  # Testes automatizados
 ```
+
+## 🌐 Deploy
+
+API disponível em produção: [https://ignite-nodejs-02-api-t2rg.onrender.com](https://ignite-nodejs-02-api-t2rg.onrender.com)
 
 ## ⚙️ Como Rodar
 
@@ -71,12 +77,12 @@ copy .env.example .env
 
 Variáveis necessárias:
 
-| Variável          | Descrição                                        | Exemplo                          |
-|-------------------|--------------------------------------------------|----------------------------------|
-| `NODE_ENV`        | Ambiente de execução                             | `development`                    |
-| `DATABASE_CLIENT` | Cliente do banco de dados                        | `sqlite` ou `pg`                 |
-| `DATABASE_URL`    | Caminho do SQLite ou URL de conexão do PostgreSQL | `./db/app.db` ou `postgresql://user:pass@host/db` |
-| `PORT`            | Porta em que o servidor irá rodar                | `3333`                           |
+| Variável          | Descrição                                         | Exemplo                                            |
+|-------------------|---------------------------------------------------|----------------------------------------------------|
+| `NODE_ENV`        | Ambiente de execução                              | `development`                                      |
+| `DATABASE_CLIENT` | Cliente do banco de dados                         | `sqlite` ou `pg`                                   |
+| `DATABASE_URL`    | Caminho do SQLite ou URL de conexão do PostgreSQL | `./db/app.db` ou `postgresql://user:pass@host/db`  |
+| `PORT`            | Porta em que o servidor irá rodar                 | `3333`                                             |
 
 ### Executando as Migrations
 
